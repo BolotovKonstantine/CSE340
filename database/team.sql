@@ -231,3 +231,8 @@ VALUES ('Custom'),
      'White',
      5
    );
+
+
+UPDATE public.inventory SET inv_description = replace(inv_description, 'small interiors', 'a huge interior') WHERE inv_id = 10;
+
+UPDATE public.inventory SET inv_image = replace(inv_image, '/images' , '/images/vehicles') , inv_thumbnail = replace(inv_thumbnail, '/images' , '/images/vehicles');
