@@ -66,7 +66,7 @@ Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)
 
 
 Util.buildInvDetails = async function (data){
-    let details = '<div id="inv-detail-display">';
+    let details = '<div id="inv-detail-main">';
     details +=
         '<img src="' +
         data.inv_image +
@@ -75,7 +75,7 @@ Util.buildInvDetails = async function (data){
         " " +
         data.inv_model +
         ' on CSE Motors" />';
-    details += '<div class="inv-details">';
+    details += '<div class="inv-detail-sub">';
     details +=
         "<h2><strong>" +
         data.inv_make +
