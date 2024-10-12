@@ -250,16 +250,6 @@ td {
 .account input::placeholder, .input-box select::placeholder, .input-box textarea::placeholder {
   color: rgba(0, 0, 0, 0.27)
 }
-.account input:required:invalid, input:focus:invalid {
-  background-image: url(/images/invald.png);
-  background-position: right top;
-  background-repeat: no-repeat;
-}
-.account input:required:valid {
-  background-image: url(/images/valid.jpg);
-  background-position: right top;
-  background-repeat: no-repeat;
-}
 .account input[type="submit"] {
   font-size: 1rem;
   padding-left: 2rem;
@@ -272,6 +262,12 @@ td {
   border-radius: .5rem;
   box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.368);
 }
+.inv-man {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
 
 @media only screen and (min-width: 768px) {
   /* For desktop: */
