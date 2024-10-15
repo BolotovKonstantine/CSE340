@@ -14,7 +14,7 @@ router.get("/detail/:inv_id", utilities.handleErrors(invController.buildByInvent
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification));
 router.post(
     "/add-classification",
-    invValidate.classificationRules(),
+    invValidate.classificationRules,
     invValidate.checkClassificationData,
     utilities.handleErrors(invController.addClassification)
 );
