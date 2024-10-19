@@ -37,4 +37,7 @@ router.post(
     utilities.handleErrors(invController.updateInventory)
 );
 
+router.get("/delete/:inv_id", utilities.handleErrors(invController.buildDelInventory));
+router.post("/delete", utilities.handleErrors(invController.deleteInventory) )
+
 module.exports = router;
