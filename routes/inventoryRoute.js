@@ -5,6 +5,7 @@ const invController = require("../controllers/invController")
 const utilities = require("../utilities/")
 const invValidate = require("../utilities/inventory-valdation")
 
+router.use(["/add-classification", "/add-inventory", "/edit/:inv_Id", "/update", "/delete/:inv_Id", "/delete/",], utilities.checkManager);
 
 router.get("/",utilities.handleErrors(invController.buildManagement));
 // Route to build inventory by classification view
@@ -14,7 +15,7 @@ router.get("/detail/:inv_id", utilities.handleErrors(invController.buildByInvent
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification));
 router.post(
     "/add-classification",
-    invValidate.classificationRules,
+    invValidate.classificationRules(),
     invValidate.checkClassificationData,
     utilities.handleErrors(invController.addClassification)
 );

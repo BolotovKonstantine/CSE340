@@ -119,6 +119,18 @@ async function accountLogin(req, res) {
     }
 }
 
+async function buildManagement(req, res) {
+    let nav = await utilities.getNav();
+ //   const unread = await messageModel.getMessageCountById(res.locals.accountData.account_id);
+
+    res.render("account/account-management", {
+        title: "Account Management",
+        nav,
+        errors: null,
+//        unread,
+    });
+//    return;
+}
 
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin }
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildManagement }
