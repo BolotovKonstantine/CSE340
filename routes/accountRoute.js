@@ -22,4 +22,21 @@ router.post(
     regValidate.checkLoginData,
     utilities.handleErrors(accController.accountLogin)
 )
+
+router.get("/update/:accountId", utilities.handleErrors(accController.buildUpdate));
+router.post(
+    "/update",
+    regValidate.updateRules(),
+    regValidate.checkAccUpdateData,
+    utilities.handleErrors(accController.accountUpdate)
+);
+router.post(
+    "/update-password",
+    regValidate.updatePassRules(),
+    regValidate.checkPassData,
+    utilities.handleErrors(accController.passUpdate)
+);
+
+router.get("/logout", utilities.handleErrors(accController.accountLogout));
+
 module.exports = router
