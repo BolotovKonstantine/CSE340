@@ -17,7 +17,7 @@ const utilities = require("./utilities/")
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
-
+const reportsRoute = require("./routes/reportsRoute")
 /* ***********************
  * Middleware
  * ************************/
@@ -59,6 +59,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", inventoryRoute)
 // Account routes
 app.use("/account", accountRoute)
+// Reports route
+app.use("/reports", reportsRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
