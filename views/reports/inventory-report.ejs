@@ -1,46 +1,38 @@
-<h1><%- title %></h1>
-<%- messages() %>
-<% if (errors) { %>
-    <ul class="notice">
-        <% errors.array().forEach(error => { %>
-            <li><%= error.msg %></li>
-        <%  }) %>
-    </ul>
-<% } %>
-<h1>Inventory Report for <%= category %></h1>
-<form action="/reports/inventory-report" method="get">
-    <label for="category">Choose a category:</label>
-    <select name="category" id="category">
-        <!-- Populate the category options dynamically -->
-        <% categories.forEach(cat => { %>
-            <option value="<%= cat.value %>" <%= category === cat.value ? 'selected' : '' %>><%= cat.label %></option>
-        <% }) %>
-    </select>
-    <button type="submit">Generate Report</button>
-</form>
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Quantity</th>
-        <th>Price</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% let totalPrice = 0; %>
-    <% items.forEach(item => { %>
+<div class="report-container">
+    <h1><%= title %></h1>
+    <%- messages() %>
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error => { %>
+                <li><%= error.msg %></li>
+            <%  }) %>
+        </ul>
+    <% } %>
+    <h1>Inventory Report</h1>
+    <table>
+        <thead>
         <tr>
-            <td><%= item.name %></td>
-            <td><%= item.quantity %></td>
-            <td><%= item.price %></td>
-            <% totalPrice += item.price * item.quantity; %>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Price</th>
         </tr>
-    <% }) %>
-    </tbody>
-    <tfoot>
-    <tr>
-        <td colspan="2">Total Price</td>
-        <td><%= totalPrice.toFixed(2) %></td>
-    </tr>
-    </tfoot>
-</table>
+        </thead>
+        <tbody>
+        <% let totalPrice = 0; %>
+        <% items.forEach(item => { %>
+            <tr>
+                <td><%= item.inv_make %></td>
+                <td><%= item.inv_model %></td>
+                <td>$<%= parseInt(item.inv_price).toFixed(2) %></td>
+                <% totalPrice += parseInt(item.inv_price) %>
+            </tr>
+        <% }) %>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="2" class="total">Total Price</td>
+            <td class="total">$<%= totalPrice.toFixed(2) %></td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

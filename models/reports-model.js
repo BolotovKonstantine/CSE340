@@ -1,14 +1,13 @@
 const pool = require("../database/")
 
-async function getInventoryByCategory(category) {
+async function getInventory() {
     try {
-        const query = 'SELECT name, quantity, price FROM inventory WHERE category = $1';
-        const values = [category];
-        const { rows } = await pool.query(query, values);
+        const query = 'SELECT inv_make, inv_model, inv_price FROM public.inventory ';
+        const { rows } = await pool.query(query);
         return rows;
     } catch (err) {
         throw new Error(`Database query failed: ${err.message}`);
     }
 }
 
-module.exports = { getInventoryByCategory };
+module.exports = { getInventory};
